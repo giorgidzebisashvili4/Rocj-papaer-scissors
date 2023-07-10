@@ -1,13 +1,13 @@
 function getComputerChoice(x){
     if (x=="0"){
-        alert("Rock");
+        return "Rock";
     } else if (x=="1") {
-        alert("Paper");
+        return "Paper";
     } else {
-        alert("Scissors");}
+        return "Scissors";}
 }
-
-getComputerChoice(Math.floor(Math.random() * 3));
+let result=getComputerChoice(Math.floor(Math.random() * 3));
+alert(result);
 
 playerSelection
 computerSelection

@@ -35,29 +35,47 @@ function playerRound(playerSelection, computerSelection){
     }
 }
 
-function getPLayerChoice(){
+function getPlayerChoice(){
     let validatedInput = false;
     while(validatedInput == false){
         const choice = prompt("Rock Paper Scissors");
         if(choice == null){
             continue;
         }
-        const choiceInLower = choice.toLocaleLowerCase();
+        const choiceInLower = choice.toLowerCase();
         if(options.includes(choiceInLower)){
-            validatedInput =true;
+            validatedInput = true;
             return choiceInLower;
         }
     }
 }
 
 function game(){
-    console.log("Welocme!")
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    console.log("Welocm!")
     for (let i=0; i<5; i++){
-        const playerSelection = getComputerChoice();
+        const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
         console.log(playerRound(playerSelection, computerSelection));
+        console.log("------------------")
+        if(checkWinner(playerSelection, computerSelection) == "PLayer"){
+            scorePlayer++;
+        }
+        else if(checkWinner(playerSelection, computerSelection) == "Computer"){
+            scoreComputer++;
+    }    
     }
     console.log("Game Over")
+    if(scorePlayer > scoreComputer){
+        console.log("Player was the winner");
+    }
+    else if(scorePlayer < scoreComputer){
+        console.log("Computer was the winner");
+    }
+    else{
+        console.log("We have a tie!");
+    }
 }
 
 game()

@@ -1,18 +1,23 @@
 const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const resultText = document.querySelector("#resultText");
+const scoreText = document.querySelector("#scoreText");
 const choiceBtns = document.querySelectorAll(".choiceBtn");
 let player;
 let computer;
 let result;
+let scorePlayer;
+let scoreComputer;
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
 
     player = button.textContent;
     computerTurn();
+    checkScore();
     playerText.textContent = `Player: ${player}`;
     computerText.textContent = `Computer: ${computer}`;
     resultText.textContent = checkWinner();
+    scoreText.textContent = `p-c ${scorePlayer}-${scoreComputer}`
 }));
 
 function computerTurn(){
@@ -46,6 +51,14 @@ function checkWinner(){
     }
 }
 
+function checkScore(){
+    if (result === "You Win!"){
+        scorePlayer = 1
+    }else if(result = "You Lose!"){
+        scoreComputer = 1
+    }else{}
+        
+    }
 
 
 

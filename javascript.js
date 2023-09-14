@@ -7,11 +7,15 @@ function computerPlay() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+// chouse random rock papaer scissors
+
 function disableButtons() {
     buttons.forEach(elem => {
         elem.disabled = true
     })
 }
+
+// turn off bottoms after someone wins 5 times
 
 function playRound(playerSelection) {
     let computerSelection = computerPlay()
@@ -20,33 +24,40 @@ function playRound(playerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') ||
         (playerSelection == 'paper' && computerSelection == 'rock')) {
-        
+        // all player wins 
         playerScore += 1
+        // score change
         result = ('You win! ' + playerSelection + ' beats ' + computerSelection
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
-
+        // all the text that shows
         if (playerScore == 5) {
             result += '<br><br>You won the game! Reload the page to play again'
             disableButtons()
+        // if player wins 5 times stop
         }
     }
     else if (playerSelection == computerSelection) {
         result = ('It\'s a tie. You both chose ' + playerSelection
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
     }
+    // if tie nothing changes, show old score with tie text
     else {
         computerScore += 1
+    // when computer wins his score add 1
         result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
-
+    // what text to show 
         if (computerScore == 5) {
             result += '<br><br>I won the game! Reload the page to play again'
+            // what text show if comp wins
             disableButtons()
+            // stop when computer score is 5
         }
     }
 
     document.getElementById('result').innerHTML = result
     return
+    // shoves final result
 }
 
 buttons.forEach(button =>{
@@ -54,6 +65,9 @@ buttons.forEach(button =>{
         playRound(button.value)
     })
 })
+
+// selects player choice and moves in function
+
 
 // console.log('hello world');
 
